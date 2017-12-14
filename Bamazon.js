@@ -20,16 +20,20 @@ connection.connect(function(err) {
 
 // Setting up display products function
 
-// function readProducts() {
-//   console.log("Selecting all products...\n");
-//   connection.query("SELECT * FROM products", function(err, res) {
-//     if (err) throw err;
-//     // Log all results of the SELECT statement
-//     console.log(res);
-// }
+function readProducts() {
+  console.log("Selecting all products...\n");
+  connection.query("SELECT * FROM products", function(err, res) {
+    if (err) throw err;
+  console.log(res);
+  });
+    // Log all results of the SELECT statement
+ 
+ 
+ }
+readProducts();
 
 // start();
-
+// 
 // // function which prompts the user for what action they should take
 // function start() {
 //   inquirer
