@@ -1,6 +1,6 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
-
+var = inStock;
 var connection = mysql.createConnection({
   host: "localhost",
   port: 8889,
@@ -48,5 +48,24 @@ function start() {
   ])
     .then(function(user) {
       // based on their answer, either call the bid or the post functions
-      console.log("You are buying " + user.number + "qty of item number #" + user.idRequested) 
-    })}};
+      console.log("You are buying " + user.number + "qty of item number #" + user.idRequested), 
+      updateProduct();
+    
+
+    function updateProduct() {
+      console.log("Placing Order....\n");
+      var query = connection.query(
+        "UPDATE products SET ? WHERE ?",
+        [
+          {
+            stock_quantity: user.number
+          },
+          {
+            id: (inStock - user.idRequested)
+          }
+        ],
+        function(err, res) {
+          console.log("Order for " + user.idRequested + " confirmed!\n");
+          console.log("Only "+ res.affectedRows + " reamining!")
+        })};
+        })}};
