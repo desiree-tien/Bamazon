@@ -16,6 +16,7 @@ var connection = mysql.createConnection({
 connection.connect(function(err) {
   if (err) throw err;
   console.log("connected as id " + connection.threadId + "\n");
+  readProducts();
 });
 
 // Setting up display products function
@@ -24,32 +25,28 @@ function readProducts() {
   console.log("Selecting all products...\n");
   connection.query("SELECT * FROM products", function(err, res) {
     if (err) throw err;
-  console.log(res);
-  });
-    // Log all results of the SELECT statement
- 
- 
- }
-readProducts();
+  console.log(res); 
+  start();
+  })
 
-// start();
-// 
-// // function which prompts the user for what action they should take
-// function start() {
-//   inquirer
-//     .prompt({
-//       name: "idRequested",
-//       type: "rawlist",
-//       message: "What is the [ID] of item you would like to purchase?",
-//       choices: ["POST", "BID"]
-//     })
-//     .then(function(answer) {
-//       // based on their answer, either call the bid or the post functions
-//       if (answer.postOrBid.toUpperCase() === "POST") {
-//         postAuction();
-//       }
-//       else {
-//         bidAuction();
-//       }
-//     });
-// }
+
+
+// function which prompts the user for what action they should take
+function start() {
+  inquirer.prompt([
+    {
+      name: "idRequested",
+      type: "list",
+      message: "What is the [ID] of item you would like to purchase?",
+      choices: ["1","2","3","4","5","6","7","8","9","10"]
+    },
+    {
+    type: "input",
+    name: "number",
+    message: "How many of this item would you like?"
+    },
+  ])
+    .then(function(user) {
+      // based on their answer, either call the bid or the post functions
+      console.log("You are buying " + user.number + "qty of item number #" + user.idRequested) 
+    })}};
