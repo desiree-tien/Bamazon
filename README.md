@@ -1,4 +1,4 @@
-# Bamazon
+
 
 # Bamazon Marketplace
 ## This program is a mock marketplace that allows users to buy items and see inventory.
