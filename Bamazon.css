@@ -1,0 +1,18 @@
+h1 {
+    text-align:center;
+    color: whitesmoke;
+}
+
+p {
+text-align: center;
+color:whitesmoke;
+}
+
+body {
+    background:lightslategray;
+}
+img {
+    padding-top:10px;
+	display: block;
+    margin: auto;
+}
